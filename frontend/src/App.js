@@ -1,29 +1,29 @@
+import React, { useEffect, useState } from 'react';
 import './global.css';
 import Routes from "./Routes";
 
-function App() {
-  async function ip() {
+const App = () => {
+  const[ip, setIp] = useState("");
+
+  useEffect(() => {
+    getIp();
+  }, []);
+
+  const getIp = async () => {
     const resp = await fetch(`https://api.ipify.org?format=json`, {
-        "method": "GET"
+      "method": "GET"
     })
     const data = await resp.json()
-    console.log(data.ip);
+    setIp(data.ip);
   }
-  
-  ip()
+  if(ip) {
+    return (
+      <Routes ip={ip} />
+    );
+  }
   return (
-    <Routes />
+    <div>LOADING</div>
   );
 }
 
 export default App;
-
-// async function ip() {
-//   const resp = await fetch(`https://api.ipify.org?format=json`, {
-//       "method": "GET"
-//   })
-//   const data = await resp.json()
-//   console.log(data.ip);
-// }
-
-// ip()

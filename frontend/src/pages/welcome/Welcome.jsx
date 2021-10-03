@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import './styles.css';
 
-function Welcome() {
+const Welcome = () => {
   return (
-    <div className="container">
+    <div className="container-welcome">
       <div className="header">
         <Link to="/home">
           <button>Começar</button>

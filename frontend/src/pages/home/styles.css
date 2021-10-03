@@ -1,0 +1,49 @@
+table{
+    border-collapse: collapse;
+    width: 80%;
+    height: 100%;
+    margin-bottom: 10%;
+    text-align: left;
+}
+table thead{
+    border-bottom: 2px solid black;
+}
+table thead tr th:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table th, table td{
+    padding: 10px;
+}
+table td:last-child{
+    display: flex;
+    justify-content: center;
+}
+table td:last-child button{
+    margin: 0 10px;
+    height: 20px;
+    width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-home{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #FFEACF;
+}
+.container-home h1{
+    margin: 10% 0;
+}
+
+#novo{
+    position: fixed;
+    top: 10px;
+    right: 10px;
+}
