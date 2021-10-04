@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { BASE_URL } from '../../utils/config';
 import Linha from './linha/Linha';
 import './styles.css';
 
@@ -11,7 +12,7 @@ const Home = ({ ip }) => {
   }, []);
 
   async function getTarefas() {
-    const resp = await fetch(`https://todolist-mauricio.herokuapp.com/lists/get-ip?ip=${ip}`, {
+    const resp = await fetch(`${BASE_URL}/lists/get-ip?ip=${ip}`, {
         "method": "GET"
     });
     const listaTarefas = await resp.json();

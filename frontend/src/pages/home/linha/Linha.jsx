@@ -1,12 +1,14 @@
+import { BASE_URL } from "../../../utils/config";
+
 const Linha = ({ dadosLinha, updateTarefas }) => {
     const excluirTarefa = async () => {
-        await fetch(`https://todolist-mauricio.herokuapp.com/lists/delete?id=${dadosLinha.id}`, {
+        await fetch(`${BASE_URL}/lists/delete?id=${dadosLinha.id}`, {
             "method": "DELETE"
         })
         await updateTarefas();
     }
     const mudarFeito = async (feito) => {
-        await fetch(`https://todolist-mauricio.herokuapp.com/lists/patch?id=${dadosLinha.id}`, {
+        await fetch(`${BASE_URL}/lists/patch?id=${dadosLinha.id}`, {
             method: "PATCH",
             headers: {
                 'Accept': 'application/json',
