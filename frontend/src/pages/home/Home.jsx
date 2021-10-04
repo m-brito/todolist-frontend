@@ -12,7 +12,6 @@ const Home = ({ ip }) => {
   }, []);
 
   async function getTarefas() {
-    console.log(process.env)
     const resp = await fetch(`${BASE_URL}/lists/get-ip?ip=${ip}`, {
         "method": "GET"
     });
