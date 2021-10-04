@@ -1,27 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../../utils/config';
+import FormCadastro from './formCadastro/FormCadastro';
 import Linha from './linha/Linha';
 import './styles.css';
 
 const Home = ({ ip }) => {
-  const[tarefas, setTarefas] = useState([]);
+  const [tarefas, setTarefas] = useState([]);
+  const [formActive, setFormActive] = useState(false);
 
   useEffect(() => {
     getTarefas();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function getTarefas() {
     const resp = await fetch(`${BASE_URL}/lists/get-ip?ip=${ip}`, {
-        "method": "GET"
+      "method": "GET"
     });
     const listaTarefas = await resp.json();
     setTarefas(listaTarefas);
   }
 
+  const openFormModal = (active) => {
+    setFormActive(active);
+  }
+
   return (
     <div className="container-home">
-      <button id="novo">Novo +</button>
+      <FormCadastro ip={ip} setFormActive={setFormActive} formActive={formActive} updateTarefas={getTarefas} />
+      <button id="novo" onClick={() => openFormModal(!formActive)}>Novo +</button>
       <h1>To Do List</h1>
       <table>
         <thead>
@@ -33,7 +40,7 @@ const Home = ({ ip }) => {
           </tr>
         </thead>
         <tbody>
-          {tarefas.map((tarefa) => <Linha key={tarefa.id} dadosLinha={tarefa} updateTarefas={getTarefas}/>)}
+          {tarefas.map((tarefa) => <Linha key={tarefa.id} dadosLinha={tarefa} updateTarefas={getTarefas} />)}
         </tbody>
       </table>
     </div>

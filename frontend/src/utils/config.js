@@ -1,1 +1,3 @@
-export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'htts://todolist-mauricio.herokuapp.com';
+export const BASE_URL = process.env.REACT_APP_BACKEND_URL ?? 'https://todolist-mauricio.herokuapp.com';
+// https://todolist-mauricio.herokuapp.com
+// http://localhost:8080
