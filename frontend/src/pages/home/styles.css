@@ -17,21 +17,6 @@ table thead tr th:last-child{
 table th, table td{
     padding: 10px;
 }
-table td:last-child{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-table td:last-child button{
-    margin: 0 10px;
-    height: 20px;
-    width: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .container-home{
     width: 100%;
     min-height: 100%;
@@ -48,11 +33,4 @@ table td:last-child button{
     position: fixed;
     top: 10px;
     right: 10px;
-}
-
-.completa td:not(tr td:last-child){
-    text-decoration-line: line-through;
-}
-.completa{
-    background-color: rgb(168, 255, 180);
 }
