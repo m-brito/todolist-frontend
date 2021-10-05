@@ -4,6 +4,7 @@ table{
     height: 100%;
     margin-bottom: 10%;
     text-align: left;
+    resize: both;
 }
 table thead{
     border-bottom: 2px solid black;
@@ -33,4 +34,10 @@ table th, table td{
     position: fixed;
     top: 10px;
     right: 10px;
+}
+
+@media screen and (max-width: 900px){
+    body{
+        min-width: 600px;
+    }
 }

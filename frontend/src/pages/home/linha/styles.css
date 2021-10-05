@@ -14,9 +14,19 @@ tr.c-linha td:last-child{
     height: 100%;
 }
 
+tr.c-linha td{
+    word-wrap: break-word;
+}
+
 .completa td:not(tr td:last-child){
     text-decoration-line: line-through;
 }
 .completa{
     background-color: rgb(168, 255, 180);
+}
+
+@media screen and (max-width: 900px){
+    tr.c-linha td p{
+        max-width: 200px;
+    }
 }

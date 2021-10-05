@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { BASE_URL } from '../../utils/config';
 import FormCadastro from './formCadastro/FormCadastro';
+import FormEdita from './formEdita/FormEdita';
 import Linha from './linha/Linha';
 import './styles.css';
 
 const Home = ({ ip }) => {
   const [tarefas, setTarefas] = useState([]);
   const [formActive, setFormActive] = useState(false);
+  const [formEditarActive, setFormEditarActive] = useState(false);
+  const [idEditar, setIdEditar] = useState()
 
   useEffect(() => {
     getTarefas();
@@ -25,9 +28,15 @@ const Home = ({ ip }) => {
     setFormActive(active);
   }
 
+  const openEditaFormModal = (id) => {
+    setIdEditar(id);
+    setFormEditarActive(!formEditarActive);
+  }
+
   return (
     <div className="container-home">
       <FormCadastro ip={ip} setFormActive={setFormActive} formActive={formActive} updateTarefas={getTarefas} />
+      {tarefas.length>0 && idEditar && <FormEdita ip={ip} tarefas={tarefas} idEditar={idEditar} formEditarActive={formEditarActive} setFormEditarActive={setFormEditarActive} setIdEditar={setIdEditar} updateTarefas={getTarefas} />}
       <button id="novo" onClick={() => openFormModal(!formActive)}>Novo +</button>
       <h1>To Do List</h1>
       <table>
@@ -40,7 +49,7 @@ const Home = ({ ip }) => {
           </tr>
         </thead>
         <tbody>
-          {tarefas.map((tarefa) => <Linha key={tarefa.id} dadosLinha={tarefa} updateTarefas={getTarefas} />)}
+          {tarefas.map((tarefa) => <Linha key={tarefa.id} dadosLinha={tarefa} updateTarefas={getTarefas} openEditaFormModal={openEditaFormModal} />)}
         </tbody>
       </table>
     </div>
